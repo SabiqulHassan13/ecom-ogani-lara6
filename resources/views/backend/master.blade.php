@@ -17,6 +17,9 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ asset("backend") }}/css/sb-admin-2.min.css" rel="stylesheet">
+  <!-- Custom styles for this page -->
+  <link href="{{ asset("backend") }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 
 </head>
 
@@ -41,7 +44,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('admin.home') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -56,15 +59,29 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBrand" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="true" aria-controls="collapseCategory">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Category Module</span>
+        </a>
+        <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Category Pages:</h6>
+            <a class="collapse-item" href="{{ url('/admin/categories/create') }}">Create Category</a>
+            <a class="collapse-item" href="{{ url('/admin/categories') }}">Category List</a>
+          </div>
+        </div>
+      </li>
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBrand" aria-expanded="true" aria-controls="collapseBrand">
           <i class="fas fa-fw fa-cog"></i>
           <span>Brand Module</span>
         </a>
         <div id="collapseBrand" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Brand Pages:</h6>
-            <a class="collapse-item" href="buttons.html">Add new Brand</a>
-            <a class="collapse-item" href="buttons.html">Brand List</a>
+            <a class="collapse-item" href="{{ url('/admin/brands/create') }}">Create Brand</a>
+            <a class="collapse-item" href="{{ url('/admin/brands') }}">Brand List</a>
           </div>
         </div>
       </li>
@@ -358,6 +375,13 @@
 
   <!-- Custom scripts for all pages-->
   <script src="{{ asset("backend") }}/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="{{ asset("backend") }}/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="{{ asset("backend") }}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{{ asset("backend") }}/js/demo/datatables-demo.js"></script>
 
 </body>
 </html>

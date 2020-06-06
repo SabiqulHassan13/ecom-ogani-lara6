@@ -1,5 +1,7 @@
 @extends('frontend.master')
 
+@section('page-title', 'Register')
+
 @section('content')
 <div class="container my-5">
     <div class="row justify-content-center">

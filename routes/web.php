@@ -45,6 +45,30 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'], 
     Route::post('login', 'Auth\LoginController@login');
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
+    // Category Routes
+    Route::get('/categories', 'CategoryController@index');
+    Route::get('/categories/create', 'CategoryController@create');
+    Route::post('/categories', 'CategoryController@store');
+    Route::get('/categories/{id}/edit', 'CategoryController@edit')->name('categories.edit');
+    Route::post('/categories/{id}', 'CategoryController@update')->name('categories.update');
+    Route::get('/categories/{id}/delete', 'CategoryController@destroy')->name('categories.destroy');
+
+    // Brand Routes
+    Route::get('/brands', 'BrandController@index');
+    Route::get('/brands/create', 'BrandController@create');
+    Route::post('/brands', 'BrandController@store');
+    Route::get('/brands/{id}/edit', 'BrandController@edit')->name('brands.edit');
+    Route::post('/brands/{id}', 'BrandController@update')->name('brands.update');
+    Route::get('/brands/{id}/delete', 'BrandController@destroy')->name('brands.destroy');
+
+    // Product Routes
+    Route::get('/products', 'ProductController@index');
+    Route::get('/products/create', 'ProductController@create');
+    Route::post('/products', 'ProductController@store');
+    Route::get('/products/{id}/edit', 'ProductController@edit')->name('products.edit');
+    Route::post('/products/{id}', 'ProductController@update')->name('products.update');
+    Route::get('/products/{id}/delete', 'ProductController@destroy')->name('products.destroy');
+
 
 });
 

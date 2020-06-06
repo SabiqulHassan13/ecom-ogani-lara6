@@ -13,7 +13,11 @@ class LoginController extends Controller
         return view('backend.auth.login');
     }
 
+    public function login(Request $request)
+    {
+        return $request->all();
 
+    }
 
     
 }
