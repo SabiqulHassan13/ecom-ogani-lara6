@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Category;
+use App\Brand;
 
 class ProductController extends Controller
 {
@@ -25,6 +27,10 @@ class ProductController extends Controller
     public function create()
     {
         //
+        $categories = Category::where('publication_status', 1)->get();
+        $brands = Brand::where('publication_status', 1)->get();
+
+        return view("backend.products.create", ['categories' => $categories, 'brands' => $brands]);
     }
 
     /**
@@ -36,6 +42,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        return $request->all();
+        
     }
 
     /**

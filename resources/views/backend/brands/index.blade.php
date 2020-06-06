@@ -48,8 +48,8 @@
                       <td>{{ $brand->image }}</td>
                       <td>{{ $brand->publication_status == 1 ? "Published" : "Unpublished" }}</td>
                       <td>
-                        <a href="{{ route('admin.brands.edit', ['id' => $brand->id]) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                        <a href="{{ route('admin.brands.destroy', ['id' => $brand->id]) }}" class="btn btn-danger btn-sm" onclick="return confirm("Are you sure to delete?");"><i class="fa fa-trash"></i></a>
+                        <a href="{{ route('admin.brands.edit', ['id' => $brand->id]) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('admin.brands.destroy', ['id' => $brand->id]) }}" class="btn btn-danger btn-sm" onclick="return confirm("Are you sure to delete?");"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>                   
                     @endforeach
