@@ -16,7 +16,7 @@
 
 Route::group(['namespace' => 'Site', 'as' => 'site.'], function() {
     Route::get('/', 'FrontendController@home')->name('home');
-    Route::get('/category', 'FrontendController@category')->name('category');
+    Route::get('/category/{id}', 'FrontendController@category')->name('category');
     Route::get('/product', 'FrontendController@singleProduct')->name('product');
     Route::get('/contact', 'FrontendController@contact')->name('contact');
 
@@ -65,6 +65,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'], 
     Route::get('/products', 'ProductController@index');
     Route::get('/products/create', 'ProductController@create');
     Route::post('/products', 'ProductController@store');
+    Route::get('/products/{id}', 'ProductController@show')->name('products.show');
     Route::get('/products/{id}/edit', 'ProductController@edit')->name('products.edit');
     Route::post('/products/{id}', 'ProductController@update')->name('products.update');
     Route::get('/products/{id}/delete', 'ProductController@destroy')->name('products.destroy');

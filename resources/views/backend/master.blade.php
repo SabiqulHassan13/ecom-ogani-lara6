@@ -21,10 +21,6 @@
   <link href="{{ asset("backend") }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 
-  <!-- TinyMCE Editor js  -->
-  <!-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> -->
-  <!-- <script>tinymce.init({selector:'textarea'});</script> -->
-
 </head>
 
 <body id="page-top">

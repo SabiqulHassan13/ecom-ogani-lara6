@@ -20,9 +20,10 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->text('short_description');
-            $table->text('long_description')->nullable();
-            $table->decimal('price');
+            $table->longText('long_description')->nullable();
+            $table->decimal('price', 8, 2);
             $table->integer('quantity');
+            $table->text('image');
             $table->tinyInteger('publication_status');
             $table->timestamps();
         });

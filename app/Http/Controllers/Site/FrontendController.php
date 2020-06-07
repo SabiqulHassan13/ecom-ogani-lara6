@@ -4,16 +4,27 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Product;
 
 class FrontendController extends Controller
 {
     //
     public function home () {
-        return view('frontend.home.home');
+        $publishedProducts = Product::where('publication_status', 1)->get();
+
+        return view('frontend.home.home', [
+            'publishedProducts' =>  $publishedProducts,
+        ]);
     }
 
-    public function category () {
-        return view('frontend.category.category');
+    public function category ($id) {
+        $publishedCategoryProducts = Product::where('category_id', $id)
+                                            ->where('publication_status', 1)
+                                            ->get();
+
+        return view('frontend.category.category', [
+            'publishedCategoryProducts' =>  $publishedCategoryProducts,
+        ]);
     }
 
     public function singleProduct () {

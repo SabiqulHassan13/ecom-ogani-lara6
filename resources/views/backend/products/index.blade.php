@@ -1,0 +1,75 @@
+@extends('backend.master')
+
+
+@section('content')
+
+<div class="row">
+
+    <!-- Content Column -->
+    <div class="col-lg-12 mb-4">
+    <div>
+        <h3 class="text-center mb-3">{{ Session::get('message') }}</h3>
+    </div>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">DataTables for Product</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>                                            
+                      <th>Id</th>
+                      <th>Product Name</th>
+                      <th>Category Name</th>
+                      <th>Brand Name</th>
+                      <th>Product Image</th>
+                      <th>Price (BDT)</th>
+                      <th>Quantity</th>
+                      <th>Publication Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>                                            
+                      <th>Id</th>
+                      <th>Product Name</th>
+                      <th>Category Name</th>
+                      <th>Brand Name</th>
+                      <th>Product Image</th>
+                      <th>Price (BDT)</th>
+                      <th>Quantity</th>
+                      <th>Publication Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    @foreach($products as $product)
+                    <tr>
+                      <td>{{ $product->id }}</td>
+                      <td>{{ $product->name }}</td>
+                      <td>{{ $product->category_name }}</td>
+                      <td>{{ $product->brand_name }}</td>
+                      <td><img src="{{ asset($product->image) }}" alt="{{ $product->name }}" width="150" height="100"></td>
+                      <td>{{ $product->price }}</td>
+                      <td>{{ $product->quantity }}</td>
+                      <td>{{ $product->publication_status == 1 ? "Published" : "Unpublished" }}</td>
+                      <td>
+                        <a href="{{ route('admin.products.show', ['id' => $product->id]) }}" class="btn btn-info btn-sm" title="product-view"><i class="fas fa-eye"></i></a>
+                        <a href="{{ route('admin.products.edit', ['id' => $product->id]) }}" class="btn btn-warning btn-sm" title="product-edit"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('admin.products.destroy', ['id' => $product->id]) }}" class="btn btn-danger btn-sm" title="product-delete" onclick="return confirm("Are you sure to delete?");"><i class="fas fa-trash"></i></a>
+                      </td>
+                    </tr>                   
+                    @endforeach
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+    
+</div>
+
+@endsection

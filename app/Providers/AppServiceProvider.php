@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use View;
+use App\Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +27,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        
+        View::composer('frontend.master',function ($view) {
+            $publishedCategories = Category::where('publication_status', 1)->get();
+            $view->with('publishedCategories', $publishedCategories);
+
+            
+        });
+
+
     }
 }

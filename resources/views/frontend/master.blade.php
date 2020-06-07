@@ -30,7 +30,7 @@
     </div> -->
 
     <!-- Humberger Begin -->
-    <div class="humberger__menu__overlay"></div>
+    <!-- <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
             <a href="#"><img src="{{ asset("frontend") }}/img/logo.png" alt=""></a>
@@ -85,7 +85,7 @@
                 <li>Free Shipping for all Order of $99</li>
             </ul>
         </div>
-    </div>
+    </div> -->
     <!-- Humberger End -->
 
     <!-- Header Section Begin -->
@@ -182,8 +182,9 @@
                             <span>All departments</span>
                         </div>
                         <ul>
-                            <li><a href="{{ url("/category") }}">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
+                            @foreach($publishedCategories as $publishedCategory)
+                            <li><a href="{{ url("/category/".$publishedCategory->id) }}">{{ $publishedCategory->name }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

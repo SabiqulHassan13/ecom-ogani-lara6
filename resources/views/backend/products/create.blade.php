@@ -37,7 +37,7 @@
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
-                                <span class="text-danger">{{ $errors->has('publication_status') ? $errors->first('publication_status') : "" }}</span>
+                                <span class="text-danger">{{ $errors->has('category_id') ? $errors->first('category_id') : "" }}</span>
                             </div>
                         </div>
                         <div class="form-group col-md-6">
@@ -49,7 +49,7 @@
                                     <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                     @endforeach
                                 </select>
-                                <span class="text-danger">{{ $errors->has('publication_status') ? $errors->first('publication_status') : "" }}</span>
+                                <span class="text-danger">{{ $errors->has('brand_id') ? $errors->first('brand_id') : "" }}</span>
                             </div>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                     <div class="form-group row">
                         <div class="col-sm-2"></div>
                         <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary btn-block">Create Brand</button>
+                            <button type="submit" class="btn btn-primary btn-block">Create Product</button>
                         </div>
                     </div>
                 </form>
