@@ -134,7 +134,7 @@
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column bg-gray-300">
+    <div id="content-wrapper" class="d-flex flex-column bg-gray-200">
 
       <!-- Main Content -->
       <div id="content">
