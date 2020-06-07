@@ -29,14 +29,14 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('site.home') }}" target="_blank">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup class="badge badge-info">site</sup></div>
+        <div class="sidebar-brand-text mx-3">SB Admin <sup class="badge badge-warning">site</sup></div>
       </a>
 
       <!-- Divider -->
@@ -292,7 +292,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-900 ">Logged as {{ Auth::user()->name }}</span>
                 <img class="img-profile rounded-circle" src="{{ asset("backend") }}/img/avatar5.png">
               </a>
               <!-- Dropdown - User Information -->
