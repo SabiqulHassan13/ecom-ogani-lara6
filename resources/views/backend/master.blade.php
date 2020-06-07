@@ -64,7 +64,7 @@
           <span>Category Module</span>
         </a>
         <div id="collapseCategory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
+          <div class="bg-gray-200 py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Category Pages:</h6>
             <a class="collapse-item" href="{{ url('/admin/categories/create') }}">Create Category</a>
             <a class="collapse-item" href="{{ url('/admin/categories') }}">Category List</a>
@@ -78,7 +78,7 @@
           <span>Brand Module</span>
         </a>
         <div id="collapseBrand" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
+          <div class="bg-gray-200 py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Brand Pages:</h6>
             <a class="collapse-item" href="{{ url('/admin/brands/create') }}">Create Brand</a>
             <a class="collapse-item" href="{{ url('/admin/brands') }}">Brand List</a>
@@ -92,7 +92,7 @@
           <span>Product Module</span>
         </a>
         <div id="collapseProduct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
+          <div class="bg-gray-200 py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Product Pages:</h6>
             <a class="collapse-item" href="{{ url('/admin/products/create') }}">Create Product</a>
             <a class="collapse-item" href="{{ url('/admin/products') }}">Product List</a>
@@ -150,7 +150,7 @@
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <input type="text" class="form-control bg-light border-0" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
                 <button class="btn btn-primary" type="button">
                   <i class="fas fa-search fa-sm"></i>
@@ -345,7 +345,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; Your Website 2020</span>
           </div>
         </div>
       </footer>
