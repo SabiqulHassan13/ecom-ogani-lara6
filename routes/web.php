@@ -38,12 +38,30 @@ Route::get('/home', 'HomeController@index')->name('home');
 // ======================== Backend Routes Start ================================
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'], function() {
-    Route::get('/', 'AdminPanelController@home')->name('home');
-    
+
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('login', 'Auth\LoginController@login');
-    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+    Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+    // Route::get('/', 'AdminPanelController@home')->name('home');
+    // Admin Dashboard Route
+    // apply middleware for unauthorized users 
+    // without Admin
+    Route::group(['middleware' => ['auth:admin']], function() {
+        Route::get('/', function() {
+            return view('backend.dashboard.dashboard');
+        })->name('home');
+
+    });
+
+});
+
+
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'], function() {
+    
+    
 
     // Category Routes
     Route::get('/categories', 'CategoryController@index');

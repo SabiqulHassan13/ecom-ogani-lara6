@@ -27,7 +27,7 @@
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
-      <div class="col-xl-5">
+      <div class="col-xl-5 mt-5">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
@@ -71,7 +71,7 @@
                     <a href="forgot-password.html">Forgot Password?</a>
                   </div>
                   <div class="text-center">
-                    <a href="register.html">Create an Account!</a>
+                    <!-- <a href="register.html">Create an Account!</a> -->
                   </div>
                 </div>
               </div>
