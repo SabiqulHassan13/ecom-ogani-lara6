@@ -29,7 +29,6 @@ class LoginController extends Controller
         $this->middleware('guest:admin')->except('logout');
     }
 
-
     public function showLoginForm()
     {
         return view('backend.auth.login');
@@ -58,7 +57,7 @@ class LoginController extends Controller
         Auth::guard()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        
+
         return redirect()->route('admin.login');
 
     }

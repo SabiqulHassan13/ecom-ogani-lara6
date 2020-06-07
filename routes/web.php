@@ -55,6 +55,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'], 
 
     });
 
+    // Password Change Routes
+
+
 });
 
 
@@ -62,7 +65,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'], 
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.', 'middleware' => ['auth:admin']], function() {
     
     
-
     // Category Routes
     Route::get('/categories', 'CategoryController@index');
     Route::get('/categories/create', 'CategoryController@create');
