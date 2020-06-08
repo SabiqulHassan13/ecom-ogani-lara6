@@ -26,84 +26,58 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                    <h4 class="mb-5">Your shopping cart contains: <b><span class="text-secondary">{{ $cartCount }}</span></b> products</h4>
                     <div class="shoping__cart__table">
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th class="shoping__product">Products</th>
-                                    <th>Price</th>
+                                    <th>Serial</th>
+                                    <th>Product Image</th>
+                                    <th>Product Name</th>
+                                    <th>Price (BDT)</th>
                                     <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th></th>
+                                    <th>Total (BDT)</th>
+                                    <th>Remove</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $i = 0; ?>
+                                @foreach($cartCollection as $item)
                                 <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="{{ asset("frontend") }}/img/cart/cart-1.jpg" alt="">
-                                        <h5>Vegetable’s Package</h5>
+                                    <td>{{ ++$i }}</td>
+                                    <td>
+                                        <img src="{{ asset($item->attributes['image']) }}" alt="{{ $item->name }}" width="100" height="70">
+                                    </td>
+                                    <td>
+                                        <h5>{{ $item->name }}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        $55.00
+                                        {{ $item->price }}
                                     </td>
                                     <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
+                                        <!-- <div class="quantity">
+                                            <div class="pro-qty"> -->
+                                                <form action="{{ route('site.cart.item.update') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $item->id }}">
+                                                    <input type="text" min="1" name="product_qty" value="{{ $item->quantity }}" class="btn btn-sm btn-secondary">
+                                                    <!-- <input type="submit" class="btn btn-info btn-sm" value="update"> -->
+                                                    <button type="submit" class="badge badge-sm">update</button>
+                                                </form>
+                                            <!-- </div>
+                                        </div> -->
                                     </td>
                                     <td class="shoping__cart__total">
-                                        $110.00
+                                        {{ $item->quantity * $item->price}}
                                     </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="{{ asset("frontend") }}/img/cart/cart-2.jpg" alt="">
-                                        <h5>Fresh Garden Vegetable</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $39.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $39.99
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
+                                    <td>
+                                        <!-- <span class="icon_close"><i class="fa fa-trash"></i></span> -->
+                                        <a href="{{ route('site.cart.item.delete', ['id' => $item->id]) }}" class="btn btn-danger btn-sm">
+                                            <span><i class="fa fa-trash"></i></span>
+                                        </a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="{{ asset("frontend") }}/img/cart/cart-3.jpg" alt="">
-                                        <h5>Organic Bananas</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $69.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $69.99
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -112,7 +86,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                        <a href="{{ route('site.home') }}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
                         <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
                             Upadate Cart</a>
                     </div>
@@ -132,10 +106,10 @@
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span>$454.98</span></li>
-                            <li>Total <span>$454.98</span></li>
+                            <li>Subtotal <span>$454.98 {{ $subTotal }} BDT</span></li>
+                            <li>Total <span>$454.98 {{ $total }} BDT</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <a href="{{ route('site.checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
                 </div>
             </div>

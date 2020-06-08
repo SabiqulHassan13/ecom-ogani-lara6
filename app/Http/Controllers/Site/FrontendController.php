@@ -37,12 +37,7 @@ class FrontendController extends Controller
         return view('frontend.contact.contact');
     }
 
-    public function showCart () {
-        return view('frontend.cart.cart');
-    }
-
-    public function checkout () {
-        return view('frontend.checkout.checkout');
-    }
+    
+    
 
 }

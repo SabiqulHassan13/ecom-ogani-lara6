@@ -20,8 +20,13 @@ Route::group(['namespace' => 'Site', 'as' => 'site.'], function() {
     Route::get('/product/{id}', 'FrontendController@singleProduct')->name('product');
     Route::get('/contact', 'FrontendController@contact')->name('contact');
 
-    Route::get('/cart', 'FrontendController@showCart')->name('cart');
-    Route::get('/checkout', 'FrontendController@checkout')->name('checkout');
+    Route::get('/cart', 'CartController@showCart')->name('cart.show');
+    Route::post('/cart/item/add', 'CartController@addToCart')->name('cart.item.add');
+    Route::post('/cart/item/update', 'CartController@updateCartItem')->name('cart.item.update');
+    Route::get('/cart/item/{id}/delete', 'CartController@deleteCartItem')->name('cart.item.delete');
+
+    Route::get('/checkout', 'CheckoutController@checkout')->name('checkout');
+    Route::post('/checkout/place-order', 'CheckoutController@checkout')->name('checkout');
 
 
 

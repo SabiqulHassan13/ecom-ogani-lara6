@@ -32,58 +32,62 @@
             </div>
             <div class="checkout__form">
                 <h4>Billing Details</h4>
-                <form action="#">
+                <form action="#" method="">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Fist Name<span>*</span></p>
-                                        <input type="text">
+                                    <div class="form-group">
+                                        <p>First Name<span class="text-danger">*</span></p>
+                                        <input type="text" class="form-control" name="first_name">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Last Name<span>*</span></p>
-                                        <input type="text">
+                                    <div class="form-group">
+                                        <p>Last Name<span class="text-danger">*</span></p>
+                                        <input type="text" class="form-control" name="last_name">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Country<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Address<span>*</span></p>
-                                <input type="text" placeholder="Street Address" class="checkout__input__add">
-                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Town/City<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Country/State<span>*</span></p>
-                                <input type="text">
-                            </div>
-                            <div class="checkout__input">
-                                <p>Postcode / ZIP<span>*</span></p>
-                                <input type="text">
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Phone<span>*</span></p>
-                                        <input type="text">
+                                    <div class="form-group">
+                                        <p>Phone<span class="text-danger">*</span></p>
+                                        <input type="text" class="form-control" name="phone">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Email<span>*</span></p>
-                                        <input type="text">
+                                    <div class="form-group">
+                                        <p>Email<span class="text-danger">*</span></p>
+                                        <input type="email" class="form-control" name="email">
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <p>Address (in details)<span class="text-danger">*</span></p>
+                                <textarea class="form-control" name="email" rows="3"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <p>City/Town<span class="text-danger">*</span></p>
+                                        <input type="text" class="form-control" name="city">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <p>District/State<span class="text-danger">*</span></p>
+                                        <input type="text" class="form-control" name="district">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <p>Postcode / ZIP<span class="text-danger">*</span></p>
+                                        <input type="text" class="form-control" name="postcode">
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="checkout__input__checkbox">
                                 <label for="acc">
                                     Create an account?

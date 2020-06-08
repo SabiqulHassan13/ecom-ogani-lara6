@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use View;
 use App\Category;
+use Cart;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,11 +31,13 @@ class AppServiceProvider extends ServiceProvider
         
         View::composer('frontend.master',function ($view) {
             $publishedCategories = Category::where('publication_status', 1)->get();
-            $view->with('publishedCategories', $publishedCategories);
-
-            
+            $view->with('publishedCategories', $publishedCategories);            
         });
 
+        // shopping cart info in frontend template
+        View::composer(['frontend.master', 'frontend.cart.cart'], function($view) {
+            $view->with('cartCount', Cart::getContent()->count());
+        });
 
     }
 }

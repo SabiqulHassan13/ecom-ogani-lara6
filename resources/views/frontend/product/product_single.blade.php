@@ -57,15 +57,23 @@
                         </div>
                         <div class="product__details__price">{{ $selectedProduct->price }} BDT</div>
                         <p>{!! $selectedProduct->short_description !!}</p>
-                        <div class="product__details__quantity">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
+
+                        <form action="{{ route('site.cart.item.add') }}" method="POST">
+                            @csrf
+
+                            <div class="product__details__quantity">
+                                <div class="quantity">
+                                    <div class="pro-qty">
+                                        <input type="number" name="product_qty" min="1" value="1">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <a href="#" class="primary-btn">ADD TO CARD</a>
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+
+                            <input type="hidden" name="product_id" value="{{ $selectedProduct->id }}">
+                            <button type="submit" class="primary-btn">Add To Cart</button>
+                        </form>
+                        <!-- <a href="" name="product_id" class="primary-btn">ADD TO CARD</a> -->
+                        <!-- <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a> -->
                         <ul>
                             <li><b>Availability</b> <span>{{ $selectedProduct->quantity > 0 ? "In Stock" : "Out Of Stock" }}</span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
