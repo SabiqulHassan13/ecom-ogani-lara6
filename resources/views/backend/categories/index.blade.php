@@ -45,8 +45,8 @@
                       <td>{{ $category->id }}</td>
                       <td>{{ $category->name }}</td>
                       <td>{{ $category->description }}</td>
-                      <td>{{ $category->image }}</td>
-                      <td>{{ $category->publication_status == 1 ? "Published" : "Unpublished" }}</td>
+                      <td><img src="{{ asset($category->image) }}" alt="{{ $category->name }}" width="150" height="100"></td>
+                      <td><span class="badge badge-info">{{ $category->publication_status == 1 ? "Published" : "Unpublished" }}</span></td>
                       <td>
                         <a href="{{ route('admin.categories.edit', ['id' => $category->id]) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
                         <a href="{{ route('admin.categories.destroy', ['id' => $category->id]) }}" class="btn btn-danger btn-sm" onclick="return confirm("Are you sure to delete?");"><i class="fas fa-trash"></i></a>

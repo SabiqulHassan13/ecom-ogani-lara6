@@ -55,7 +55,8 @@
                       <td><img src="{{ asset($product->image) }}" alt="{{ $product->name }}" width="150" height="100"></td>
                       <td>{{ $product->price }}</td>
                       <td>{{ $product->quantity }}</td>
-                      <td>{{ $product->publication_status == 1 ? "Published" : "Unpublished" }}</td>
+                      <td><span class="badge badge-info">{{ $product->publication_status == 1 ? "Published" : "Unpublished" }}</span></td>
+                      <!-- <td>{{ $product->publication_status == 1 ? "Published" : "Unpublished" }}</td> -->
                       <td>
                         <a href="{{ route('admin.products.show', ['id' => $product->id]) }}" class="btn btn-info btn-sm" title="product-view"><i class="fas fa-eye"></i></a>
                         <a href="{{ route('admin.products.edit', ['id' => $product->id]) }}" class="btn btn-warning btn-sm" title="product-edit"><i class="fas fa-edit"></i></a>

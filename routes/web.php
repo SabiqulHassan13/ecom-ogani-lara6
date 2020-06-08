@@ -17,7 +17,7 @@
 Route::group(['namespace' => 'Site', 'as' => 'site.'], function() {
     Route::get('/', 'FrontendController@home')->name('home');
     Route::get('/category/{id}', 'FrontendController@category')->name('category');
-    Route::get('/product', 'FrontendController@singleProduct')->name('product');
+    Route::get('/product/{id}', 'FrontendController@singleProduct')->name('product');
     Route::get('/contact', 'FrontendController@contact')->name('contact');
 
     Route::get('/cart', 'FrontendController@showCart')->name('cart');
@@ -64,7 +64,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.'], 
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'admin.', 'middleware' => ['auth:admin']], function() {
     
-    
+    // User Routes
+    Route::get('/users', 'UserController@index');
+    Route::get('/users/{id}/edit', 'UserController@edit')->name('users.edit');
+    Route::post('/users/{id}', 'UserController@update')->name('users.update');
+    Route::get('/users/{id}/delete', 'UserController@destroy')->name('users.destroy');
+
+
     // Category Routes
     Route::get('/categories', 'CategoryController@index');
     Route::get('/categories/create', 'CategoryController@create');

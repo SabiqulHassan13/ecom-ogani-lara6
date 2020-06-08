@@ -57,6 +57,20 @@
         Interface
       </div>
 
+      <!-- Nav Item - User CRUD Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>User Module</span>
+        </a>
+        <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-gray-200 py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom User Pages:</h6>
+            <!-- <a class="collapse-item" href="{{ url('/admin/') }}">Create User</a> -->
+            <a class="collapse-item" href="{{ url('/admin/users') }}">User List</a>
+          </div>
+        </div>
+      </li>
       <!-- Nav Item - Category CRUD Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="true" aria-controls="collapseCategory">
@@ -292,7 +306,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-900 ">Logged as {{ Auth::user()->name }}</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-900 ">Logged In as {{ Auth::user()->name }}</span>
                 <img class="img-profile rounded-circle" src="{{ asset("backend") }}/img/avatar5.png">
               </a>
               <!-- Dropdown - User Information -->

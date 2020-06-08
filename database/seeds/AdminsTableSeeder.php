@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Admin;
+use Illuminate\Support\Str;
 
 class AdminsTableSeeder extends Seeder
 {
@@ -14,9 +15,12 @@ class AdminsTableSeeder extends Seeder
     {
         //
         Admin::create([
-            'name'      =>  "Site Admin",
-            'email'     =>  'admin@admin.com',
-            'password'  =>  bcrypt('password'),
+            'name'              =>  "Site Admin",
+            'email'             =>  'admin@admin.com',
+            'email_verified_at' =>  now(),
+            'password'          =>  bcrypt('password'),
+            'remember_token'    =>  Str::random(10),
+
         ]);
 
     }

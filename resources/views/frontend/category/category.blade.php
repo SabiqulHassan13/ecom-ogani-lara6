@@ -346,7 +346,7 @@
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
-                                    <h6><a href="#">{{ $publishedCategoryProduct->name }}</a></h6>
+                                    <h6><a href="{{ url('product/'.$publishedCategoryProduct->id) }}">{{ $publishedCategoryProduct->name }}</a></h6>
                                     <h5>{{ $publishedCategoryProduct->price }} BDT</h5>
                                 </div>
                             </div>

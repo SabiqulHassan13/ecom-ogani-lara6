@@ -27,8 +27,10 @@ class FrontendController extends Controller
         ]);
     }
 
-    public function singleProduct () {
-        return view('frontend.product.product_single');
+    public function singleProduct ($id) {
+        $selectedProduct = Product::where('id', $id)->first();
+
+        return view('frontend.product.product_single', ['selectedProduct' => $selectedProduct]);
     }
 
     public function contact () {
