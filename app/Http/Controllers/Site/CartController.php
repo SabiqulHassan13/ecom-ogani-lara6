@@ -28,7 +28,7 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {        
-        $product = Product::where('id', $request->product_id)->first();
+        $product = Product::where('id', $request->id)->first();
         
         Cart::add([
             'id'         =>  $product->id,

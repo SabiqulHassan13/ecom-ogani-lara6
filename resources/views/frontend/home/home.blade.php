@@ -59,20 +59,35 @@
                 </div>
             </div>
             <div class="row featured__filter">
-                @foreach($publishedProducts as $publishedProduct)
+                @foreach($publishedProducts as $product)
                 <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
                     <div class="featured__item">
                         <!-- <div class="featured__item__pic set-bg" data-setbg="{{ asset("frontend") }}/img/featured/feature-5.jpg"> -->
-                        <div class="featured__item__pic set-bg" data-setbg="{{ asset($publishedProduct->image) }}">
+                        <div class="featured__item__pic set-bg" data-setbg="{{ asset($product->image) }}">
                             <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                <li>
+                                    <a href="#"><i class="fa fa-heart"></i></a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('site.product', ['id' => $product->id]) }}" target="_blank"><i class="fa fa-eye"></i></a>
+                                </li>
+                                <li>
+                                    
+                                    <a href="{{ route('site.cart.item.add', ['id' => $product->id]) }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('add-to-cart-form').submit();"><i class="fa fa-shopping-cart"></i>
+                                    </a>
+
+                                    <form id="add-to-cart-form" action="{{ route('site.cart.item.add', ['id' => $product->id]) }}" method="POST" style="display: none;">
+                                        @csrf
+                                        <input type="hidden" name="product_qty" value="1">
+                                    </form>
+                                </li>
                             </ul>
                         </div>
                         <div class="featured__item__text">
-                            <h6><a href="#">{{ $publishedProduct->name }}</a></h6>
-                            <h5>{{ $publishedProduct->price }} BDT</h5>
+                            <h6><a href="#">{{ $product->name }}</a></h6>
+                            <h5>{{ $product->price }} BDT</h5>
                         </div>
                     </div>
                 </div>

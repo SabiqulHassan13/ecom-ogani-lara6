@@ -58,7 +58,7 @@
                         <div class="product__details__price">{{ $selectedProduct->price }} BDT</div>
                         <p>{!! $selectedProduct->short_description !!}</p>
 
-                        <form action="{{ route('site.cart.item.add') }}" method="POST">
+                        <!-- <form action="" method="POST">
                             @csrf
 
                             <div class="product__details__quantity">
@@ -71,7 +71,18 @@
 
                             <input type="hidden" name="product_id" value="{{ $selectedProduct->id }}">
                             <button type="submit" class="primary-btn">Add To Cart</button>
+                        </form> -->
+                        <a href="{{ route('site.cart.item.add', ['id' => $selectedProduct->id]) }}" class="primary-btn"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('add-to-cart-form').submit();">Add To Cart <i class="fa fa-shopping-cart"></i>
+                        </a>
+
+                        <form id="add-to-cart-form" action="{{ route('site.cart.item.add', ['id' => $selectedProduct->id]) }}" method="POST" style="display: none;">
+                            @csrf
+                            <input type="hidden" name="product_qty" value="1">
                         </form>
+                        
+                        <!-- <a href="" name="product_id" class="primary-btn">Add to Wishlist <i class="fa fa-heart"></i></a> -->
                         <!-- <a href="" name="product_id" class="primary-btn">ADD TO CARD</a> -->
                         <!-- <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a> -->
                         <ul>

@@ -35,9 +35,9 @@ class AppServiceProvider extends ServiceProvider
         });
 
         // shopping cart info in frontend template
-        View::composer(['frontend.master', 'frontend.cart.cart'], function($view) {
-            $view->with('cartCount', Cart::getContent()->count());
-        });
+        // View::composer(['frontend.master', 'frontend.cart.cart'], function($view) {
+        //     $view->with('cartCount', Cart::getContent()->count());
+        // });
 
     }
 }
