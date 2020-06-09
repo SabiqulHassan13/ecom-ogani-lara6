@@ -20,10 +20,13 @@ Route::group(['namespace' => 'Site', 'as' => 'site.'], function() {
     Route::get('/product/{id}', 'FrontendController@singleProduct')->name('product');
     Route::get('/contact', 'FrontendController@contact')->name('contact');
 
+    // Shopping-Cart Routes 
     Route::get('/cart', 'CartController@showCart')->name('cart.show');
-    Route::post('/add-to-cart/{id}', 'CartController@addToCart')->name('cart.item.add');
-    Route::post('/cart/item/update', 'CartController@updateCartItem')->name('cart.item.update');
-    Route::get('/cart/item/{id}/delete', 'CartController@deleteCartItem')->name('cart.item.delete');
+    Route::post('/cart/add-item', 'CartController@addToCart')->name('cart.add');
+    Route::post('/cart/update-item', 'CartController@updateCartItem')->name('cart.update');
+    Route::get('/cart/delete-item/{rowId}', 'CartController@deleteCartItem')->name('cart.delete');
+    Route::get('/cart/clear', 'CartController@clearCart')->name('cart.clear');
+
 
     Route::get('/checkout', 'CheckoutController@checkout')->name('checkout');
     Route::post('/checkout/place-order', 'CheckoutController@checkout')->name('checkout');

@@ -58,28 +58,19 @@
                         <div class="product__details__price">{{ $selectedProduct->price }} BDT</div>
                         <p>{!! $selectedProduct->short_description !!}</p>
 
-                        <!-- <form action="" method="POST">
+                        <form action="{{ route('site.cart.add') }}" method="POST">
                             @csrf
 
                             <div class="product__details__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
-                                        <input type="number" name="product_qty" min="1" value="1">
+                                        <input type="text" name="product_qty" min="1" value="1">
                                     </div>
                                 </div>
                             </div>
 
                             <input type="hidden" name="product_id" value="{{ $selectedProduct->id }}">
-                            <button type="submit" class="primary-btn">Add To Cart</button>
-                        </form> -->
-                        <a href="{{ route('site.cart.item.add', ['id' => $selectedProduct->id]) }}" class="primary-btn"
-                                        onclick="event.preventDefault();
-                                                        document.getElementById('add-to-cart-form').submit();">Add To Cart <i class="fa fa-shopping-cart"></i>
-                        </a>
-
-                        <form id="add-to-cart-form" action="{{ route('site.cart.item.add', ['id' => $selectedProduct->id]) }}" method="POST" style="display: none;">
-                            @csrf
-                            <input type="hidden" name="product_qty" value="1">
+                            <button type="submit" class="primary-btn">Add To Cart <i class="fa fa-shopping-cart"></i></button>
                         </form>
                         
                         <!-- <a href="" name="product_id" class="primary-btn">Add to Wishlist <i class="fa fa-heart"></i></a> -->

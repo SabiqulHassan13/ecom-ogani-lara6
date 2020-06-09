@@ -9,40 +9,41 @@ use Cart;
 
 class CartController extends Controller
 {
-    //
-    public function showCart () {
+    
+    public function showCart () 
+    {
+        // Cart::clear();
+
         $cartCollection = Cart::getContent();
-        $subTotal = Cart::getSubTotal();
-        $total = Cart::getTotal();
-        // $cartTotalQuantity = Cart::getTotalQuantity();
 
-
-        return view('frontend.cart.cart', [
-                'cartCollection'    =>  $cartCollection,
-                'subTotal'          =>  $subTotal,
-                'total'             =>  $total
-                // 'cartTotalQuantity' =>  $cartTotalQuantity
-            ]);
+        return view('frontend.cart.cart', ['cartCollection' => $cartCollection]);
 
     }
 
     public function addToCart(Request $request)
     {        
-        $product = Product::where('id', $request->id)->first();
+        $productId  = $request->input('product_id');
+        $productQty = $request->input('product_qty');
+        $product    = Product::where('id', $productId)->first();
         
-        Cart::add([
+        // $userId = auth()->user()->id;
+        Cart::add(array(
             'id'         =>  $product->id,
             'name'       =>  $product->name,
             'price'      =>  $product->price,
-            'quantity'   =>  $request->product_qty,
+            'quantity'   =>  $productQty,
             'attributes' =>  array(
                 'image'  =>  $product->image,
-                // 'color'  => 'blue'
-            )
-        ]);
+            ),
+            'associatedModel' => 'Product',
+        ));
+
+        // echo "<pre>";
+        // print_r($cartItem);
+        // dd($cartItem);
             
-        // return response()->json($product);
         return redirect()->route('site.cart.show')->with('message', 'item added into cart');
+        // return redirect()->back()->with('message', 'item added into cart');
     }
 
     public function updateCartItem(Request $request)
@@ -62,6 +63,11 @@ class CartController extends Controller
         return redirect()->route('site.cart.show')->with('message', 'item removed from cart');
     }
 
+    public function clearCart() {
+        Cart::clear();
+
+        return redirect()->route('site.cart.show')->with('message', 'cart is cleared');
+    }
 
 
 

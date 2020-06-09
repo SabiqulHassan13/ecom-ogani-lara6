@@ -66,22 +66,21 @@
                         <div class="featured__item__pic set-bg" data-setbg="{{ asset($product->image) }}">
                             <ul class="featured__item__pic__hover">
                                 <li>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
+                                    <!-- <a href="#"><i class="fa fa-heart"></i></a> -->
+                                    <button type="button" class=""><i class="fa fa-heart"></i></button>
                                 </li>
                                 <li>
-                                    <a href="{{ route('site.product', ['id' => $product->id]) }}" target="_blank"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('site.product', ['id' => $product->id]) }}" target="_blank" class="btn btn-sm rounded-0"><i class="fa fa-eye"></i></a>
                                 </li>
                                 <li>
-                                    
-                                    <a href="{{ route('site.cart.item.add', ['id' => $product->id]) }}"
-                                        onclick="event.preventDefault();
-                                                        document.getElementById('add-to-cart-form').submit();"><i class="fa fa-shopping-cart"></i>
-                                    </a>
-
-                                    <form id="add-to-cart-form" action="{{ route('site.cart.item.add', ['id' => $product->id]) }}" method="POST" style="display: none;">
+                                    <form action="{{ route('site.cart.add') }}" method="POST">
                                         @csrf
-                                        <input type="hidden" name="product_qty" value="1">
+                                        
+                                        <input type="hidden" name="product_qty" min="1" value="1">                                      
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        <button type="button" class=""><i class="fa fa-shopping-cart"></i></button>
                                     </form>
+                                    
                                 </li>
                             </ul>
                         </div>

@@ -26,12 +26,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="mb-5">Your shopping cart contains: <b><span class="text-secondary">{{ $cartCount }}</span></b> products</h4>
+                    @if(\Cart::getTotalQuantity()>0)
+                    <h4>Now, <b>{{ \Cart::getTotalQuantity() }}</b> products of <b>{{ Cart::getContent()->count() }}</b> types in your cart: </h4>
+                    <hr class="mb-3">
+
                     <div class="shoping__cart__table">
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>Serial</th>
+                                    <th>PID</th>
                                     <th>Product Image</th>
                                     <th>Product Name</th>
                                     <th>Price (BDT)</th>
@@ -41,10 +44,16 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <!-- <?php
+                                    $products = $cartCollection;
+                                    echo "<pre>";
+                                    print_r($products);
+                                ?> -->
+
                                 <?php $i = 0; ?>
                                 @foreach($cartCollection as $item)
                                 <tr>
-                                    <td>{{ ++$i }}</td>
+                                    <td>{{ $item->id }}</td>
                                     <td>
                                         <img src="{{ asset($item->attributes['image']) }}" alt="{{ $item->name }}" width="100" height="70">
                                     </td>
@@ -52,43 +61,52 @@
                                         <h5>{{ $item->name }}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        {{ $item->price }}
+                                        {{ $item->price }} {{ Cart::get($item->id)->price }}
                                     </td>
                                     <td class="shoping__cart__quantity">
-                                        <!-- <div class="quantity">
-                                            <div class="pro-qty"> -->
-                                                <form action="{{ route('site.cart.item.update') }}" method="POST">
+                                        <div class="quantity">
+                                            <!-- <div class="pro-qty"> -->
+                                                <form action="{{ route('site.cart.update') }}" method="POST">
                                                     @csrf
-                                                    <input type="hidden" name="id" value="{{ $item->id }}">
-                                                    <input type="text" min="1" name="product_qty" value="{{ $item->quantity }}" class="btn btn-sm btn-secondary">
-                                                    <!-- <input type="submit" class="btn btn-info btn-sm" value="update"> -->
-                                                    <button type="submit" class="badge badge-sm">update</button>
+                                                    <div class="form-group row">
+                                                        <input type="hidden" name="id" value="{{ $item->id }}">
+                                                        <input type="text" min="1" name="product_qty" value="{{ $item->quantity }}" class="form-control form-control-sm"
+                                                        style="width: 40px; margin-left: 60px;">
+                                                        <!-- <input type="submit" class="btn btn-info btn-sm" value="update"> -->
+                                                        <button class="btn btn-info btn-sm" style="margin-left: 15px;"> <i class="fa fa-edit"></i></button>
+                                                    </div>
                                                 </form>
-                                            <!-- </div>
-                                        </div> -->
+                                            <!-- </div> -->
+                                        </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                        {{ $item->quantity * $item->price}}
+                                        {{ $item->quantity * $item->price}}/=  {{ Cart::get($item->id)->getPriceSum() }}/=
                                     </td>
                                     <td>
-                                        <!-- <span class="icon_close"><i class="fa fa-trash"></i></span> -->
-                                        <a href="{{ route('site.cart.item.delete', ['id' => $item->id]) }}" class="btn btn-danger btn-sm">
+                                        <a href="{{ route('site.cart.delete', ['rowId' => $item->id ]) }}" class="btn btn-danger btn-sm">
                                             <span><i class="fa fa-trash"></i></span>
                                         </a>
                                     </td>
                                 </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>
+
+                    @else
+                        <h4>No Product(s) In Your Cart</h4><br>
+                    @endif
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
                         <a href="{{ route('site.home') }}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                            Upadate Cart</a>
+                        @if(\Cart::getTotalQuantity()>0)
+                        <a href="{{ route('site.cart.clear') }}" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                            Clear Your Cart</a>
+                        @endif 
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -106,8 +124,8 @@
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span>$454.98 {{ $subTotal }} BDT</span></li>
-                            <li>Total <span>$454.98 {{ $total }} BDT</span></li>
+                            <li>Subtotal <span>0.00  BDT</span></li>
+                            <li>Total <span>{{ \Cart::getTotal() }} BDT</span></li>
                         </ul>
                         <a href="{{ route('site.checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
