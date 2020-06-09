@@ -34,7 +34,7 @@
                 <h4>Billing Details</h4>
                 <form action="#" method="">
                     <div class="row">
-                        <div class="col-lg-8 col-md-6">
+                        <div class="col-lg-6 col-md-6 card-body">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
@@ -114,6 +114,7 @@
                                     placeholder="Notes about your order, e.g. special notes for delivery.">
                             </div>
                         </div>
+                        <div class="col-lg-2"></div>
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4>Your Order</h4>

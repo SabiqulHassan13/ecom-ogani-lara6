@@ -61,7 +61,7 @@
                                         <h5>{{ $item->name }}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        {{ $item->price }} {{ Cart::get($item->id)->price }}
+                                        {{ Cart::get($item->id)->price }}
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
@@ -80,7 +80,7 @@
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                        {{ $item->quantity * $item->price}}/=  {{ Cart::get($item->id)->getPriceSum() }}/=
+                                        {{ Cart::get($item->id)->getPriceSum() }}/=
                                     </td>
                                     <td>
                                         <a href="{{ route('site.cart.delete', ['rowId' => $item->id ]) }}" class="btn btn-danger btn-sm">

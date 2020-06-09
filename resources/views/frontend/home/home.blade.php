@@ -78,9 +78,8 @@
                                         
                                         <input type="hidden" name="product_qty" min="1" value="1">                                      
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                        <button type="button" class=""><i class="fa fa-shopping-cart"></i></button>
-                                    </form>
-                                    
+                                        <button type="submit" class="rounded-0"><i class="fa fa-shopping-cart"></i></button>
+                                    </form>                                    
                                 </li>
                             </ul>
                         </div>
