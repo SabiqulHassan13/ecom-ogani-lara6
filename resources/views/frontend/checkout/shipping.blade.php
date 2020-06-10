@@ -26,20 +26,25 @@
         <div class="container">
 
             <div class="checkout__form">
-                <h4 class="font-weight-normal">Billing Details</h4>
+                <h4 class="font-weight-normal">Shipping Details</h4>
                 <!-- <form action="#" method=""> -->
                     <div class="row">
 
                         <div class="col-lg-6 col-md-6 card-body border border-secondary ml-3">
-                            <form action="{{ route('site.checkout.update.billing') }}" method="POST">
+                            <form action="" method="POST">
                                 @csrf 
                                 
-                                <input type="hidden" name="customer_id" value="{{ $customer_info->id }}">
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="form-group">
-                                            <p>Customer Name<span class="text-danger">*</span></p>
-                                            <input type="text" class="form-control" name="name" value="{{ $customer_info->name }}">
+                                            <p>Shipping Name<span class="text-danger">*</span></p>
+                                            <input type="text" class="form-control" name="shipping_name">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <p>Company Name<span class="text-danger">*</span></p>
+                                            <input type="text" class="form-control" name="company_name">
                                         </div>
                                     </div>
                                 </div>
@@ -47,37 +52,37 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <p>Phone<span class="text-danger">*</span></p>
-                                            <input type="text" class="form-control" name="phone" value="{{ $customer_info->phone }}">
+                                            <input type="text" class="form-control" name="phone">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <p>Email<span class="text-danger">*</span></p>
-                                            <input type="email" class="form-control" name="email" value="{{ $customer_info->email }}">
+                                            <input type="email" class="form-control" name="email">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <p>Address (in details)<span class="text-danger">*</span></p>
-                                    <textarea class="form-control" name="address" rows="3">{{ $customer_info->address }}</textarea>
+                                    <textarea class="form-control" name="address" rows="3"></textarea>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <p>City<span class="text-danger">*</span></p>
-                                            <input type="text" class="form-control" name="city" value="{{ $customer_info->city }}">
+                                            <p>City/Town<span class="text-danger">*</span></p>
+                                            <input type="text" class="form-control" name="city">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <p>Country<span class="text-danger">*</span></p>
-                                            <input type="text" class="form-control" name="country" value="{{ $customer_info->country }}">
+                                            <p>Country/State<span class="text-danger">*</span></p>
+                                            <input type="text" class="form-control" name="country">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <p>Postcode / ZIP<span class="text-danger">*</span></p>
-                                            <input type="text" class="form-control" name="zip_code" value="{{ $customer_info->zip_code }}">
+                                            <input type="text" class="form-control" name="zip_code">
                                         </div>
                                     </div>
                                 </div>                                

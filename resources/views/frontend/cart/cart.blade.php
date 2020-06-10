@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     @if(\Cart::getTotalQuantity()>0)
-                    <h4>Now, <b>{{ \Cart::getTotalQuantity() }}</b> products of <b>{{ Cart::getContent()->count() }}</b> types in your cart: </h4>
+                    <h4>Now, <b>{{ \Cart::getTotalQuantity() }}</b> product(s) of <b>{{ Cart::getContent()->count() }}</b> types in your cart: </h4>
                     <hr class="mb-3">
 
                     <div class="shoping__cart__table">
@@ -103,7 +103,7 @@
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
                         <a href="{{ route('site.home') }}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        @if(\Cart::getTotalQuantity()>0)
+                        @if(\Cart::getTotalQuantity() > 0)
                         <a href="{{ route('site.cart.clear') }}" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
                             Clear Your Cart</a>
                         @endif 
@@ -127,7 +127,7 @@
                             <li>Subtotal <span>0.00  BDT</span></li>
                             <li>Total <span>{{ \Cart::getTotal() }} BDT</span></li>
                         </ul>
-                        <a href="{{ route('site.checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <a href="{{ route('site.checkout.register') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
                 </div>
             </div>

@@ -28,8 +28,21 @@ Route::group(['namespace' => 'Site', 'as' => 'site.'], function() {
     Route::get('/cart/clear', 'CartController@clearCart')->name('cart.clear');
 
 
-    Route::get('/checkout', 'CheckoutController@checkout')->name('checkout');
-    Route::post('/checkout/place-order', 'CheckoutController@checkout')->name('checkout');
+    // Checkout Routes
+    Route::get('/checkout/login', 'CheckoutController@checkoutLoginForm')->name('checkout.login');
+
+
+    Route::get('/checkout/register', 'CheckoutController@checkoutRegisterForm')->name('checkout.register');
+    Route::post('/checkout/register', 'CheckoutController@checkoutRegistrationProcess');
+
+    Route::get('/checkout/billing', 'CheckoutController@checkoutBillingInfo')->name('checkout.billing');
+    Route::post('/checkout/update-billing', 'CheckoutController@checkoutUpdateBillingInfo')->name('checkout.update.billing');
+    Route::get('/checkout/shipping', 'CheckoutController@checkoutShippingInfo')->name('checkout.shipping');
+    Route::post('/checkout/save-shipping', 'CheckoutController@checkoutSaveShippingInfo')->name('checkout.save.shipping');
+
+
+
+    // Route::post('/checkout/place-order', 'CheckoutController@checkout')->name('checkout');
 
 
 
