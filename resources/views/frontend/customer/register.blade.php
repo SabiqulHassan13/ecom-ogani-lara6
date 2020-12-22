@@ -86,10 +86,10 @@
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a href="forgot-password.html">Forgot Password?</a>
+                    <!-- <a href="">Forgot Password?</a> -->
                   </div>
                   <div class="text-center">
-                    <a href="{{ route('site.checkout.login') }}">Already have an Account!</a>
+                    <a href="{{ url('checkout/login') }}">Already have an Account!</a>
                   </div>
                 </div>
               </div>

@@ -127,7 +127,14 @@
                             <li>Subtotal <span>0.00  BDT</span></li>
                             <li>Total <span>{{ \Cart::getTotal() }} BDT</span></li>
                         </ul>
-                        <a href="{{ route('site.checkout.register') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        
+                        {{ $customer_id = Session::get('customer_id') }}
+                        @if($customer_id != NULL)
+                            <a href="{{ url('checkout/billing') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        @else
+                            <a href="{{ url('checkout/register') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        @endif
+                    
                     </div>
                 </div>
             </div>

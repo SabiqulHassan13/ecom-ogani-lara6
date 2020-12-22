@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="{{ asset("frontend") }}/img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="{{ asset("frontend") }}/img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -86,7 +86,7 @@
                             </form>
                         </div>
 
-                        <div class="col-lg-4 col-md-6 border border-secondary px-0 ml-auto  mr-3">
+                        <!-- <div class="col-lg-4 col-md-6 border border-secondary px-0 ml-auto  mr-3">
                             <div class="checkout__order">
                                 <h4>Your Order</h4>
                                 <div class="checkout__order__products">Products <span>Total</span></div>
@@ -122,7 +122,7 @@
                                 </div>
                                 <button type="submit" class="site-btn">PLACE ORDER</button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                 <!-- </form> -->

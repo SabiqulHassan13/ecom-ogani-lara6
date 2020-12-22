@@ -91,7 +91,7 @@
                             </form>
                         </div>
 
-                        <div class="col-lg-4 col-md-6 border border-secondary px-0 ml-auto  mr-3">
+                        <!-- <div class="col-lg-4 col-md-6 border border-secondary px-0 ml-auto  mr-3">
                             <div class="checkout__order">
                                 <h4>Your Order</h4>
                                 <div class="checkout__order__products">Products <span>Total</span></div>
@@ -127,7 +127,7 @@
                                 </div>
                                 <button type="submit" class="site-btn">PLACE ORDER</button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                 <!-- </form> -->

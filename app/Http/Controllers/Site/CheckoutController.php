@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use App\Customer;
 use App\Shipping;
 use Session;
+use DB;
+use Cart;
+
 
 class CheckoutController extends Controller
 {
@@ -53,7 +56,14 @@ class CheckoutController extends Controller
 
         Session::put('shipping_id', $shipping->id);
 
-        
+
+    }
+
+    public function checkoutPaymentForm() {
+        $cartCollection = Cart::getContent();
+
+
+        return view('frontend.checkout.payment', ['cartCollection' => $cartCollection]);
     }
 
     //  Request $request
@@ -61,8 +71,49 @@ class CheckoutController extends Controller
         return view('frontend.customer.login');
     }
 
+    public function checkoutLoginProcess(Request $request) {
+        // $customerEmail    = $request->email;
+        // $customerPassword = Hash::make($request->password);
+
+        // $customer = DB::table('customers')
+        //             ->select('email')
+        //             ->where('email', Input::get('admin_username'))
+        //             ->first();
+
+        // if ($customer && Hash::check($customerPassword, $customer['password'])) {
+        //     return $request->all();
+        // }
+
+        $customer = Customer::where('email', $request->email)->first();
+
+        if ($customer && password_verify($request->password, $customer->password)) {
+            Session::put('customer_id', $customer->id);
+            Session::put('customer_name', $customer->name);
+            
+            // return response()->json($customer);
+            return redirect()->route('site.checkout.billing')->with('message', 'Logged in successfully');            
+        }
+        else {
+            return redirect()->back()->with('message', 'the credentials didn\'t match');
+        }
+
+        // echo "<pre>";
+        // print_r($customer);
+        // exit();
+        // return response()->json($customer);
+
+    }
+
+    public function checkoutLogoutProcess() {
+        Session::flush();
+
+        return redirect()->route('site.home')->with('message', 'Logged out sucessfully');
+    }
+
     public function checkoutRegisterForm () {
+        
         return view('frontend.customer.register');
+
     }
     
     public function checkoutRegistrationProcess (Request $request) {
@@ -70,7 +121,7 @@ class CheckoutController extends Controller
         $this->validate($request, [
             'name'      => 'required|min:3|max:255',
             'phone'     => 'required|min:11',
-            'email'     => 'required|email',
+            'email'     => 'required|email|unique:customers',
             'password'  => 'required|string|min:6',
         ]);
 

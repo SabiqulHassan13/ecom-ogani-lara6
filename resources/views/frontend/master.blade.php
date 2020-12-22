@@ -119,17 +119,18 @@
                                 </ul>
                             </div>
 
-                            {{ $customer_id = Session::get('customer_id') }}
+                            {{ $customer_id = Session::get('customer_id') }} | 
+                            {{ Session::get('customer_name') }}
                             @if($customer_id == NULL)
                                 <div class="header__top__right__auth">
-                                    <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login / </a>
+                                    <a href="{{ route('site.checkout.login') }}"><i class="fa fa-user"></i> Login / </a>
                                 </div>
                                 <div class="header__top__right__auth">
-                                    <a href="{{ route('register') }}" class="pl-0">Register</a>
+                                    <a href="{{ route('site.checkout.register') }}" class="pl-0">Register</a>
                                 </div>
                             @else
                                 <div class="header__top__right__auth">
-                                    <a href="" class="pl-0"><i class="fa fa-user"></i> Logout</a>
+                                    <a href="{{ route('site.checkout.logout') }}" class="pl-0"><i class="fa fa-user"></i> Logout</a>
                                 </div>
                             @endif
                         </div>

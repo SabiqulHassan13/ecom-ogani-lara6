@@ -20,6 +20,7 @@ Route::group(['namespace' => 'Site', 'as' => 'site.'], function() {
     Route::get('/product/{id}', 'FrontendController@singleProduct')->name('product');
     Route::get('/contact', 'FrontendController@contact')->name('contact');
 
+
     // Shopping-Cart Routes 
     Route::get('/cart', 'CartController@showCart')->name('cart.show');
     Route::post('/cart/add-item', 'CartController@addToCart')->name('cart.add');
@@ -30,7 +31,9 @@ Route::group(['namespace' => 'Site', 'as' => 'site.'], function() {
 
     // Checkout Routes
     Route::get('/checkout/login', 'CheckoutController@checkoutLoginForm')->name('checkout.login');
+    Route::post('/checkout/login', 'CheckoutController@checkoutLoginProcess');
 
+    Route::get('/checkout/logout', 'CheckoutController@checkoutLogoutProcess')->name('checkout.logout');
 
     Route::get('/checkout/register', 'CheckoutController@checkoutRegisterForm')->name('checkout.register');
     Route::post('/checkout/register', 'CheckoutController@checkoutRegistrationProcess');
@@ -39,6 +42,7 @@ Route::group(['namespace' => 'Site', 'as' => 'site.'], function() {
     Route::post('/checkout/update-billing', 'CheckoutController@checkoutUpdateBillingInfo')->name('checkout.update.billing');
     Route::get('/checkout/shipping', 'CheckoutController@checkoutShippingInfo')->name('checkout.shipping');
     Route::post('/checkout/save-shipping', 'CheckoutController@checkoutSaveShippingInfo')->name('checkout.save.shipping');
+    Route::get('/checkout/payment', 'CheckoutController@checkoutPaymentForm')->name('checkout.payment');
 
 
 

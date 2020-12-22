@@ -39,7 +39,7 @@
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                     <!-- <p class="text-danger">{{ Session::has('message') }}</p> -->
                   </div>
-                  <form class="user" action="{{ url('/admin/login') }}" method="POST">
+                  <form class="user" action="{{ url('/checkout/login') }}" method="POST">
                     @csrf 
                     <div class="form-group">
                       <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter Email Address...">
@@ -72,7 +72,7 @@
                     <a href="forgot-password.html">Forgot Password?</a>
                   </div>
                   <div class="text-center">
-                    <a href="{{ route('site.checkout.register') }}">Create an Account!</a>
+                    <a href="{{ url('checkout/register') }}">Create an Account!</a>
                   </div>
                 </div>
               </div>
